@@ -31,12 +31,12 @@ if __name__ == '__main__':
         #for i in range(1,6):
         sch_date= date.today() + timedelta(days=1)
         if sch_date.weekday() <= 3 or sch_date.weekday() == 6: #Mon, Tue, Wed, Thu, Sat
-            log_str = "{0} Msg scheduled to {4} for {1}, msg: {2} {3} PDY".format(
+            log_str = "{0} Msg scheduled to {1} for {2}, msg: {3} {4} PDY".format(
                 datetime.datetime.now(),
+                SLACK_CHANNEL,
                 sch_date,
                 (sch_date + timedelta(days=1)).day, 
-                cal_abbr((sch_date + timedelta(days=1)).month),
-                SLACK_CHANNEL
+                cal_abbr((sch_date + timedelta(days=1)).month)
             )
             print(log_str)
             response = client.chat_scheduleMessage(
@@ -53,7 +53,7 @@ if __name__ == '__main__':
             log_str= "{0} no Msg scheduled to {1} for {2}".format(
                 datetime.datetime.now(),
                 SLACK_CHANNEL,
-                (sch_date + timedelta(days=1))
+                sch_date
             ) 
             print(log_str)
             file.write(log_str+"\n")
