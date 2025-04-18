@@ -53,7 +53,7 @@ if __name__ == '__main__':
             log_str= "{0} no Msg scheduled to {1} for {2}".format(
                 datetime.datetime.now(),
                 SLACK_CHANNEL,
-                (sch_date + timedelta(days=1)).day
+                (sch_date + timedelta(days=1))
             ) 
             print(log_str)
             file.write(log_str+"\n")
